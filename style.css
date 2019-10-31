@@ -1,8 +1,11 @@
 html {
 
-    font-family: Calibri,Helvetica,Arial,sans-serif;
-    font-weight: 300;
-    background-color: lightgray;
+    font-family: -apple-system, "Segoe UI", Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #323C46;
+
+    background-color: #E9E9E9;
     overflow-y: scroll;
 
     -webkit-touch-callout: none;
@@ -30,11 +33,14 @@ html {
 }
 
 .content {
-    background-color: white;
-    margin-top: 6px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid gray;
+
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .gametable {
