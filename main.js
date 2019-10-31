@@ -55,17 +55,33 @@
 
  */
 
-const toDoListItems = [
+const toDoItems = [
     "Clean house",
     "Make dinner",
     "make a todo list",
 ];
 
-const listElem = document.querySelector("#todo-list");
 
-for (let i = 0; i < toDoListItems.length; i++) {
-    const value = toDoListItems[i];
-    const newListItem = document.createElement("li");
-    newListItem.textContent = value;
-    listElem.appendChild(newListItem);
+
+function listProducts(productList) {
+    const elementList = document.querySelector("#todo-list");
+    elementList.innerHTML = '';
+    productList.forEach(function (item) {
+        const li = document.createElement('li');
+        li.textContent = item;
+        elementList.appendChild(li);
+    });
 }
+
+listProducts(toDoItems);
+
+const filterField = document.querySelector('#filter')
+filterField.addEventListener('input', function (event) {
+    const filteredProducts = toDoItems.filter(function (item) {
+        return item.toLowerCase().includes(
+            event.currentTarget.value.toLowerCase()
+        );
+    });
+    listProducts(filteredProducts);
+})
+
