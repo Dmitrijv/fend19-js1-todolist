@@ -63,25 +63,49 @@ const toDoItems = [
 
 
 
-function listProducts(productList) {
-    const elementList = document.querySelector("#todo-list");
-    elementList.innerHTML = '';
-    productList.forEach(function (item) {
-        const li = document.createElement('li');
-        li.textContent = item;
-        elementList.appendChild(li);
+function listItems(itemList) {
+
+    const newList = document.createElement("tbody");
+    newList.setAttribute("id","todo-table-body")
+
+    itemList.forEach(function (task, index) {
+        
+        const tr = document.createElement("tr");
+
+        const tdDate = document.createElement("td");
+        tdDate.textContent = "2019-11-01";
+        tr.appendChild(tdDate);
+
+        const tdTask = document.createElement("td");
+        tdTask.textContent = `${index+1}. ${task}`;
+        tr.appendChild(tdTask);
+
+        const tdCategory = document.createElement("td");
+        tdCategory.textContent = 'misc';
+        tr.appendChild(tdCategory);
+
+        const tdDelete = document.createElement("td");
+        tdDelete.textContent = '🗑️';
+        tr.appendChild(tdDelete);
+
+        newList.appendChild(tr);
+
     });
+
+    const oldList = document.querySelector("#todo-table-body");
+    document.querySelector("#todo-table").replaceChild(newList, oldList);
+
 }
 
-listProducts(toDoItems);
+listItems(toDoItems);
 
-const filterField = document.querySelector('#filter')
+const filterField = document.querySelector('#filter');
 filterField.addEventListener('input', function (event) {
-    const filteredProducts = toDoItems.filter(function (item) {
+    const filteredItems = toDoItems.filter(function (item) {
         return item.toLowerCase().includes(
             event.currentTarget.value.toLowerCase()
         );
     });
-    listProducts(filteredProducts);
+    listItems(filteredItems);
 })
 

@@ -9,12 +9,15 @@ html {
     background-color: lightgray;
     overflow-y: scroll;
 
+
 }
+
 
 
 .header {
     padding: 4px;
     text-align: center;
+    font-size: larger;
 }
 
 .header h3 {
@@ -33,8 +36,8 @@ html {
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
 
     margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 4px;
+    margin-right: 4 px;
 }
 
 .listContainer {
@@ -76,22 +79,27 @@ html {
     float: right;
 }
 
-.maxwidth {
-    display: inline-block; overflow: hidden; 
-}
-
-.gametable td.mouseovered:hover {
-    background: black;
+input {
+margin: auto;
 }
 
 .gametable td {
 
     background: whitesmoke;
-    font-size: 12pt;
+    font-size: 14pt;
+
+    border: 1px solid white;
 
     /* border: 1px solid red; */
+    padding-left: 8px;
 
 }
+
+
+.gametable td.mouseovered:hover {
+    background: black;
+}
+
 
 
 .gametable td.titleCell {
