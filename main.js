@@ -87,6 +87,7 @@ function drawTodoList(itemList) {
 
         const tdDate = document.createElement("td");
         tdDate.textContent = "2019-11-01";
+        tdDate.classList.add("dealineCell");
         tr.appendChild(tdDate);        
 
         const tdCategory = document.createElement("td");
@@ -94,12 +95,20 @@ function drawTodoList(itemList) {
         tr.appendChild(tdCategory);
 
         const tdDelete = document.createElement("td");
+        tdDelete.classList.add("deleteButtonCell");
+        tdDelete.setAttribute("id","deleteItem"+(index+1)+"Button");
+        tdDelete.addEventListener("click", clickDeleteButton);
         tdDelete.textContent = '🗑️';
         tr.appendChild(tdDelete);
 
         newList.appendChild(tr);
 
     });
+
+    function clickDeleteButton(e) {
+        const itemIndex = Number(e.currentTarget.getAttribute("id").match(/\d+/))-1; // list is 1 to n, array is 0 to n-1
+        deleteListItem(itemIndex);
+    }
 
     const oldList = document.querySelector("#todo-table-body");
     document.querySelector("#todo-table").replaceChild(newList, oldList);
@@ -109,10 +118,10 @@ function drawTodoList(itemList) {
 drawTodoList(toDoItems);
 
 
-function deleteItem(index, items){
-    if (items && index > -1 && index < items.length)
-        items.splice(index, 1);
-    drawTodoList(items);
+function deleteListItem(index){
+    if (toDoItems && index > -1 && index < toDoItems.length)
+        toDoItems.splice(index, 1);
+    drawTodoList(toDoItems);
 }
 
 const filterField = document.querySelector('#filter');
