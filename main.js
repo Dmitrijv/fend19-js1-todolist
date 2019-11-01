@@ -99,18 +99,24 @@ submitButton.addEventListener("click", createNewTask);
 
 function createNewTask() {
 
-    const newTask = {}
+    const textInput = document.querySelector("#newTaskInput");
 
-    newTask["task"] = document.querySelector("#newTaskInput").value;
+    if (textInput.value.length===0){
+        textInput.focus();
+        return;
+    }
+
+    const newTask = {};
+
+    newTask["task"] = textInput.value;
     newTask["category"] = document.querySelector("#categorySelector").value;
     newTask["deadline"] = document.querySelector("#dateSelector").value
 
-    document.querySelector("#newTaskInput").value = "";
+    textInput.value = "";
+    textInput.focus();
 
     toDoItems.push(newTask);
     drawTodoList(toDoItems);
-
-
 
 }
 
