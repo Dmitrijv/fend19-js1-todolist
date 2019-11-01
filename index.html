@@ -22,17 +22,12 @@
         <div class="listContainer">
 
 
-            <p>
-                <label for="newTaskInput">Task description: </label>
-                <input type="text" id="newTaskInput">   
-                <input type="submit" for="newTaskInput" value="Add" id="newTaskSubmit" >
-            </p>
-
-            <p>
-                <label for="newTaskInput">Date: </label> <input type="date" id="dateSelector" name="trip-start" value="2019-11-01" min="2019-11-01" requiredpattern="\d{4}-\d{2}-\d{2}">
-                <select id="categorySelector"></select>
-            </p>
-            
+            <span>
+                Add a new <select id="categorySelector"></select> errand 
+                to <input type="text" id="newTaskInput"> 
+                that must be done before <input type="date" id="dateSelector" value="2019-11-01" min="2019-11-01" requiredpattern="\d{4}-\d{2}-\d{2}">
+                <input type="submit" for="newTaskInput" value="Submit" id="newTaskSubmit" >
+            </span>            
 
             <p>
                 <span id="radioButtonSpan">
