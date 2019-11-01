@@ -1,16 +1,24 @@
 html {
 
     font-family: -apple-system, "Segoe UI", Helvetica, sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 12px;
     color: #323C46;
 
     /* background-color: rgba(134, 134, 134, 1); */
     background-color: lightgray;
     overflow-y: scroll;
 
-
 }
+
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
 
 .header {
     padding: 4px;
@@ -29,20 +37,23 @@ html {
 
 .content {
 
+    width: 800px;
+
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
 
     margin-top: 10px;
-    margin-left: 4px;
-    margin-right: 4 px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .listContainer {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
-    /*background-color: rgba(255,100,0,.3);*/
+    /**/
+    background-color: rgba(255,100,0,.3);
 }
 
 table.todo {
@@ -56,6 +67,9 @@ table.todo {
 
 table.todo th {
 
+
+    line-height: 1.3;
+
     height: 20px;
     padding: 2px 6px 3px 6px;
 
@@ -65,6 +79,8 @@ table.todo th {
     text-align: left;
     font-size: 14pt;
     font-weight: bold;
+
+    border-right: 1px solid white;
 
     /*border: 1px solid white;*/
 
@@ -76,30 +92,21 @@ table.todo:not(:last-child) {
 }
 */
 
-table.todo th {
-    border-right: 1px solid white;
-}
-
-
-
-.float-left {
-    float: left;
-}
-
-.float-right {
-    float: right;
-}
-
 table.todo td {
 
+    white-space: nowrap;
+    line-height: 1.3;
+
     background: whitesmoke;
-    font-size: 14pt;
+    font-size: 12pt;
 
     border: 1px solid white;
 
-    /* border: 1px solid red; */
+    padding: 10px 6px;
+    /* border: 1px solid red; 
     padding-left: 4px;
     padding-right: 4px;
+    */
 
 }
 
@@ -111,9 +118,14 @@ table.todo td.titleCell {
     text-align:center;
 }
 
-table.todo .deleteButtonCell {
+table.todo td.deleteButtonCell {
     width: 25px;
     text-align: center;
+    cursor: pointer;
+}
+
+.deleteButtonCell:hover {
+    background-color: red;
 }
 
 table.todo .categoryCell {

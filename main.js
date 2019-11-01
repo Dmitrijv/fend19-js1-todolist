@@ -56,9 +56,21 @@
  */
 
 const toDoItems = [
-    "Clean house",
-    "Make dinner",
-    "make a todo list",
+    {
+        "task": "clean house",
+        "deadline": "2019-11-02",
+        "category": "Work",
+    },
+    {
+        "task": "watch a movie",
+        "deadline": "2019-11-02",
+        "category": "R&R",
+    },
+    {
+        "task": "bake a cake",
+        "deadline": "2019-11-01",
+        "category": "Misc",
+    },
 ];
 
 
@@ -81,27 +93,48 @@ function fillCategoryOptions() {
 }
 fillCategoryOptions();
 
+
+const submitButton = document.querySelector("#newTaskSubmit");
+submitButton.addEventListener("click", createNewTask);
+
+function createNewTask() {
+
+    const newTask = {}
+
+    newTask["task"] = document.querySelector("#newTaskInput").value;
+    newTask["category"] = document.querySelector("#categorySelector").value;
+    newTask["deadline"] = document.querySelector("#dateSelector").value
+
+    document.querySelector("#newTaskInput").value = "";
+
+    toDoItems.push(newTask);
+    drawTodoList(toDoItems);
+
+
+
+}
+
 function drawTodoList(itemList) {
 
     const newList = document.createElement("tbody");
     newList.setAttribute("id", "todo-table-body");
 
-    itemList.forEach(function (task, index) {
+    itemList.forEach(function (item, index) {
 
         const tr = document.createElement("tr");
 
         const tdTask = document.createElement("td");
-        tdTask.textContent = `${index + 1}. ${task}`;
+        tdTask.textContent = `${index + 1}. ${item['task']}`;
         tr.appendChild(tdTask);
 
         const tdDate = document.createElement("td");
-        tdDate.textContent = "2019-11-01";
+        tdDate.textContent = item['deadline'];
         tdDate.classList.add("dealineCell");
         tr.appendChild(tdDate);
 
         const tdCategory = document.createElement("td");
         tdCategory.classList.add("categoryCell");
-        tdCategory.textContent = 'misc';
+        tdCategory.textContent = item['category'];
         tr.appendChild(tdCategory);
 
         const tdDelete = document.createElement("td");
@@ -132,7 +165,7 @@ function clickDeleteButton(e) {
 
 
 function deleteListItem(index) {
-    if (toDoItems && index > -1 && index < toDoItems.length)
+    if (index > -1 && index < toDoItems.length)
         toDoItems.splice(index, 1);
     drawTodoList(toDoItems);
 }
