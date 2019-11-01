@@ -21,22 +21,21 @@
 
         <div class="listContainer">
 
-            <P>
+
+            <p>
+                <label for="newTaskInput">Add a new task: </label>
+                <input type="text" id="newTaskInput">
+                <input type="submit" for="newTaskInput" value="Add" >
+            </p>
+
+            <p>
                 <input type="date" id="start" name="trip-start" value="2019-11-01" min="2019-11-01" max=""  requiredpattern="\d{4}-\d{2}-\d{2}">
-            </P>
+
+                <select id="categorySelector" >
+                </select>
+
+            </p>
             
-            <P>
-                <span id="radioButtonSpan">
-                    <input type="radio" id="contactChoice1" name="contact" value="email">
-                    <label for="contactChoice1">Email</label>
-                    
-                    <input type="radio" id="contactChoice2" name="contact" value="phone">
-                    <label for="contactChoice2">Phone</label>
-                    
-                    <input type="radio" id="contactChoice3" name="contact" value="mail">
-                    <label for="contactChoice3">Mail</label>
-                </span>
-            </P>
 
             <P>
                 <span id="filterFieldSpan">
@@ -45,13 +44,27 @@
                 </span>
             </P>
 
+            <p>
+                <span id="radioButtonSpan">
+                    <input type="radio" id="contactChoice1" name="contact" value="email">
+                    <label for="contactChoice1">Email</label>
+            
+                    <input type="radio" id="contactChoice2" name="contact" value="phone">
+                    <label for="contactChoice2">Phone</label>
+            
+                    <input type="radio" id="contactChoice3" name="contact" value="mail">
+                    <label for="contactChoice3">Mail</label>
+                </span>
+            </P>
+
+
             <table class="todo" id="todo-table">
                 <thead>
                     <tr>
                         <th>Task</th>
                         <th class="dealineCell" >Deadline</th>
-                        <th class="deleteButtonCell" > Category </th>
-                        <th></th>
+                        <th class="categoryCell" > Category </th>
+                        <th class="deleteButtonCell" ></th>
                     </tr>
                 </thead>
                 <tbody id="todo-table-body">

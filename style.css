@@ -112,6 +112,11 @@ table.todo .deleteButtonCell {
     text-align: center;
 }
 
+table.todo .categoryCell {
+    width: 100px;
+    text-align: left;
+}
+
 table.todo .dealineCell {
     width: 100px;
 }
@@ -126,3 +131,7 @@ table.todo td.addItemButtonCell {
     color: white;
 }
 
+
+div.listContainer > table.todo > tbody > tr:hover {
+    background: white;
+}

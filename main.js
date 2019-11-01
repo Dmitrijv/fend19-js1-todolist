@@ -62,7 +62,7 @@ const toDoItems = [
 ];
 
 
-const CATEGORIES = [
+const TASK_CATEGORIES = [
     "All",
     "Misc",
     "Work",
@@ -71,32 +71,43 @@ const CATEGORIES = [
 ];
 
 
+function fillCategoryOptions() {
+    const select = document.querySelector('#categorySelector');
+    TASK_CATEGORIES.forEach(function (category) {
+        const option = document.createElement("option");
+        option.setAttribute("value", category);
+        option.textContent = category;
+        select.appendChild(option);
+    });
+}
+fillCategoryOptions();
 
 function drawTodoList(itemList) {
 
     const newList = document.createElement("tbody");
-    newList.setAttribute("id","todo-table-body")
+    newList.setAttribute("id", "todo-table-body");
 
     itemList.forEach(function (task, index) {
-        
+
         const tr = document.createElement("tr");
 
         const tdTask = document.createElement("td");
-        tdTask.textContent = `${index+1}. ${task}`;
+        tdTask.textContent = `${index + 1}. ${task}`;
         tr.appendChild(tdTask);
 
         const tdDate = document.createElement("td");
         tdDate.textContent = "2019-11-01";
         tdDate.classList.add("dealineCell");
-        tr.appendChild(tdDate);        
+        tr.appendChild(tdDate);
 
         const tdCategory = document.createElement("td");
+        tdCategory.classList.add("categoryCell");
         tdCategory.textContent = 'misc';
         tr.appendChild(tdCategory);
 
         const tdDelete = document.createElement("td");
         tdDelete.classList.add("deleteButtonCell");
-        tdDelete.setAttribute("id","deleteItem"+(index+1)+"Button");
+        tdDelete.setAttribute("id", "deleteItem" + (index + 1) + "Button");
         tdDelete.addEventListener("click", clickDeleteButton);
         tdDelete.textContent = '🗑️';
         tr.appendChild(tdDelete);
@@ -104,11 +115,6 @@ function drawTodoList(itemList) {
         newList.appendChild(tr);
 
     });
-
-    function clickDeleteButton(e) {
-        const itemIndex = Number(e.currentTarget.getAttribute("id").match(/\d+/))-1; // list is 1 to n, array is 0 to n-1
-        deleteListItem(itemIndex);
-    }
 
     const oldList = document.querySelector("#todo-table-body");
     document.querySelector("#todo-table").replaceChild(newList, oldList);
@@ -118,13 +124,22 @@ function drawTodoList(itemList) {
 drawTodoList(toDoItems);
 
 
-function deleteListItem(index){
+
+function clickDeleteButton(e) {
+    let itemIndex = Number(e.currentTarget.getAttribute("id").match(/\d+/));
+    itemIndex--; // list is 1 to n, array is 0 to n-1 
+    deleteListItem(itemIndex);
+}
+
+
+function deleteListItem(index) {
     if (toDoItems && index > -1 && index < toDoItems.length)
         toDoItems.splice(index, 1);
     drawTodoList(toDoItems);
 }
 
 const filterField = document.querySelector('#filter');
+
 filterField.addEventListener('input', function (event) {
     
     const filteredItems = toDoItems.filter(function (item) {
@@ -135,5 +150,5 @@ filterField.addEventListener('input', function (event) {
 
     drawTodoList(filteredItems);
 
-})
+});
 
