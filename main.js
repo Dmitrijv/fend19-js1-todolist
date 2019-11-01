@@ -63,11 +63,10 @@ const toDoItems = [
 
 
 const TASK_CATEGORIES = [
-    "All",
-    "Misc",
-    "Work",
     "R&R",
+    "Work",
     "Family",
+    "Misc",
 ];
 
 
@@ -138,17 +137,14 @@ function deleteListItem(index) {
     drawTodoList(toDoItems);
 }
 
-const filterField = document.querySelector('#filter');
 
+const filterField = document.querySelector('#filterInput');
 filterField.addEventListener('input', function (event) {
-    
     const filteredItems = toDoItems.filter(function (item) {
         return item.toLowerCase().includes(
             event.currentTarget.value.toLowerCase()
         );
     });
-
     drawTodoList(filteredItems);
-
 });
 

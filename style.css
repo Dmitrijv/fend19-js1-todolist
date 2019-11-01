@@ -84,6 +84,7 @@ table.todo th {
 
 .float-right {
     float: right;
+    margin-bottom: 2px;
 }
 
 table.todo td {
