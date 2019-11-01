@@ -63,6 +63,7 @@ const toDoItems = [
 
 
 const CATEGORIES = [
+    "All",
     "Misc",
     "Work",
     "R&R",
