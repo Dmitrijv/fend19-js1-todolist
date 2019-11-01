@@ -137,7 +137,7 @@ function deleteListItem(index) {
     drawTodoList(toDoItems);
 }
 
-ss
+
 const filterField = document.querySelector('#filterInput');
 filterField.addEventListener('input', function (event) {
     const filteredItems = toDoItems.filter(function (item) {

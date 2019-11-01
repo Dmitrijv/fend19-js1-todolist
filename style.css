@@ -12,8 +12,6 @@ html {
 
 }
 
-
-
 .header {
     padding: 4px;
     text-align: center;
@@ -41,7 +39,7 @@ html {
 }
 
 .listContainer {
-    max-width: 800px;
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
     /*background-color: rgba(255,100,0,.3);*/
@@ -83,9 +81,13 @@ table.todo th {
 }
 
 
+
+.float-left {
+    float: left;
+}
+
 .float-right {
     float: right;
-    margin-bottom: 2px;
 }
 
 table.todo td {
