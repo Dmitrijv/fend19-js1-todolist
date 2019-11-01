@@ -71,16 +71,19 @@ html {
 
 }
 
+/*
 .gametable th:not(:last-child) {
     border-right: 1px solid white;
 }
+*/
+
+.gametable th {
+    border-right: 1px solid white;
+}
+
 
 .float-right {
     float: right;
-}
-
-input {
-margin: auto;
 }
 
 .gametable td {

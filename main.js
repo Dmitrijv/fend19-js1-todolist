@@ -62,8 +62,16 @@ const toDoItems = [
 ];
 
 
+const CATEGORIES = [
+    "Misc",
+    "Work",
+    "R&R",
+    "Family",
+];
 
-function listItems(itemList) {
+
+
+function drawTodoList(itemList) {
 
     const newList = document.createElement("tbody");
     newList.setAttribute("id","todo-table-body")
@@ -72,13 +80,13 @@ function listItems(itemList) {
         
         const tr = document.createElement("tr");
 
-        const tdDate = document.createElement("td");
-        tdDate.textContent = "2019-11-01";
-        tr.appendChild(tdDate);
-
         const tdTask = document.createElement("td");
         tdTask.textContent = `${index+1}. ${task}`;
         tr.appendChild(tdTask);
+
+        const tdDate = document.createElement("td");
+        tdDate.textContent = "2019-11-01";
+        tr.appendChild(tdDate);        
 
         const tdCategory = document.createElement("td");
         tdCategory.textContent = 'misc';
@@ -97,15 +105,25 @@ function listItems(itemList) {
 
 }
 
-listItems(toDoItems);
+drawTodoList(toDoItems);
+
+
+function deleteItem(index, items){
+    if (items && index > -1 && index < items.length)
+        items.splice(index, 1);
+    drawTodoList(items);
+}
 
 const filterField = document.querySelector('#filter');
 filterField.addEventListener('input', function (event) {
+    
     const filteredItems = toDoItems.filter(function (item) {
         return item.toLowerCase().includes(
             event.currentTarget.value.toLowerCase()
         );
     });
-    listItems(filteredItems);
+
+    drawTodoList(filteredItems);
+
 })
 
