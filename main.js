@@ -57,9 +57,9 @@
 
 const toDoItems = [
     {
-        "task": "clean house",
+        "task": "clean my house",
         "deadline": "2019-11-02",
-        "category": "Work",
+        "category": "Misc",
     },
     {
         "task": "watch a movie",
@@ -67,10 +67,27 @@ const toDoItems = [
         "category": "R&R",
     },
     {
+        "task": "play football",
+        "deadline": "2019-11-03",
+        "category": "Family",
+    },
+    {
         "task": "bake a cake",
         "deadline": "2019-11-02",
         "category": "Misc",
     },
+    {
+        "task": "bake bread with family",
+        "deadline": "2019-11-03",
+        "category": "Family",
+    },
+
+    {
+        "task": "sell house to client",
+        "deadline": "2020-11-02",
+        "category": "Work",
+    },
+
 ];
 
 

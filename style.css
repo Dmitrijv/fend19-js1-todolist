@@ -128,7 +128,6 @@ table.todo:not(:last-child) {
 */
 
 table.todo td {
-    background: whitesmoke;
     border: 1px solid white;
     padding: 6px 4px;
 }
@@ -159,6 +158,10 @@ table.todo .dealineCell {
     width: 70px;
 }
 
-div.listContainer > table.todo > tbody > tr:hover {
+table.todo > tbody > tr {
+    background: #ededed;
+}
+
+table.todo > tbody > tr:hover {
     background: white;
 }
