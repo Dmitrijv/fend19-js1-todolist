@@ -63,12 +63,12 @@ const toDoItems = [
     },
     {
         "task": "watch a movie",
-        "deadline": "2019-11-02",
+        "deadline": "2018-11-02",
         "category": "R&R",
     },
     {
         "task": "bake a cake",
-        "deadline": "2019-11-01",
+        "deadline": "2019-11-02",
         "category": "Misc",
     },
 ];
@@ -103,7 +103,6 @@ function updateMinimumDate() {
 
 };
 updateMinimumDate();
-
 
 function buildRadioButtons(categories) {
 
@@ -148,27 +147,25 @@ fillCategoryDropDown();
 
 const submitButton = document.querySelector("#newTaskSubmit");
 submitButton.addEventListener("click", createNewTask);
+
 function createNewTask() {
 
-    const textInput = document.querySelector("#newTaskInput");
-
     // task description can't be empty
+    const textInput = document.querySelector("#newTaskInput");
     if (textInput.value.length === 0) {
         textInput.focus();
         textInput.classList.replace("borderWhite", "borderRed");
         return;
     }
 
-    // deadline can't be before today
-    const dateInput = document.querySelector("#dateSelector")
-    const now = new Date();
-    const date = new Date(dateInput.value);
-    if ((date - now) < 0) {
+    // deadline can't be before current time
+    const dateInput = document.querySelector("#dateSelector");
+    if (dateInput.validity.valid === false) {
         dateInput.focus();
         return;
     }
 
-    textInput.classList.replace("borderRed", "borderWhite");
+    //textInput.classList.replace("borderRed", "borderWhite");
 
     const newTask = {};
     newTask["task"] = textInput.value;
@@ -176,11 +173,13 @@ function createNewTask() {
     newTask["deadline"] = document.querySelector("#dateSelector").value
 
     textInput.value = "";
-    //textInput.focus();
+    dateInput.classList.remove("borderRed");
+
     toDoItems.push(newTask);
     drawFilteredList(toDoItems);
 
 }
+
 
 
 const filterField = document.querySelector('#filterInput');
@@ -217,6 +216,7 @@ function drawTodoList(toDoItems) {
         const tdDate = document.createElement("td");
         tdDate.textContent = item['deadline'];
         tdDate.classList.add("dealineCell");
+        if (isOverdue(item["deadline"])) tdDate.classList.add("overdue");
         tr.appendChild(tdDate);
 
         const tdCategory = document.createElement("td");
@@ -232,6 +232,16 @@ function drawTodoList(toDoItems) {
         tr.appendChild(tdDelete);
 
         newList.appendChild(tr);
+
+        function isOverdue(dateStr) {
+            let currentDate = new Date();
+            currentDate.setHours(0);
+            currentDate.setMinutes(0);
+            currentDate.setSeconds(0);
+            currentDate.setMilliseconds(0);
+            const targetDate = new Date(dateStr.replace(/(\d{4})-(\d{2})-(\d{2})/, "$1/$2/$3"));
+            return (targetDate - currentDate) < 0;
+        }           
 
     });
 
@@ -254,7 +264,7 @@ function clickDeleteButton(e) {
 function deleteListItem(index) {
     if (index > -1 && index < toDoItems.length)
         toDoItems.splice(index, 1);
-    drawTodoList(toDoItems);
+    drawFilteredList(toDoItems);
 }
 
 
