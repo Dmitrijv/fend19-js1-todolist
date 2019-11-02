@@ -21,23 +21,29 @@
 
         <div class="listContainer">
 
-            <span>
-                Add a new <select id="categorySelector"></select> errand 
-                to <input type="text" id="newTaskInput"> 
-                which must be done before <input type="date" id="dateSelector" value="2019-11-01" min="2019-11-01" required pattern="\d{4}-\d{2}-\d{2}">
+            <div class="borderedBox">
+                Add a new <select class="inputBorder" id="categorySelector"></select> errand 
+                to <input class="inputBorder" type="text" id="newTaskInput"> 
+                which must be done before <input class="inputBorder" type="date" id="dateSelector" value="2019-11-01" min="2019-11-01" required pattern="\d{4}-\d{2}-\d{2}">
                 <input type="submit" for="newTaskInput" value="Submit" id="newTaskSubmit" >
-            </span>            
+            </div>            
 
-            <p>
-                <span id="radioButtonSpan">
-                    <input type="radio" id="contactChoice1" name="contact" value="email">
-                    <label for="contactChoice1">Email</label>
-                    <input type="radio" id="contactChoice2" name="contact" value="phone">
-                    <label for="contactChoice1">Phone</label>
-                    <input type="radio" id="contactChoice3" name="contact" value="mail">
-                    <label for="contactChoice3">Mail</label>
-                </span>
-            </P>
+            <hr/>
+
+            <div class="borderedBox" id="radioButtonContainer">
+
+                <input type="radio" id="contactChoice1" name="contact" value="email">
+                <label for="contactChoice1">Email</label>
+
+                <input type="radio" id="contactChoice2" name="contact" value="phone">
+                <label for="contactChoice1">Phone</label>
+
+                <input type="radio" id="contactChoice3" name="contact" value="mail">
+                <label for="contactChoice3">Mail</label>
+
+            </div>
+
+        </div>
 
 
             <table class="todo" id="todo-table">
@@ -57,7 +63,7 @@
                 <tbody id="todo-table-body">
                 </tbody>
             </table>
-        </div>
+
 
     </div>
 

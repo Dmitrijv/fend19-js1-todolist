@@ -4,7 +4,10 @@ html {
     font-size: 13px;
     color: #323C46;
 
-    /* background-color: rgba(134, 134, 134, 1); */
+    /*
+    background-color: rgba(134, 134, 134, 1); 
+    background-color: rgba(228, 229, 220, 1); 
+    */
     background-color: lightgray;
     overflow-y: scroll;
 
@@ -49,6 +52,7 @@ html {
 }
 
 .listContainer {
+
     width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -63,6 +67,36 @@ table.todo {
     margin-right: auto;
     margin-bottom: 0px;
     border-bottom: 1px solid white;
+}
+
+.borderedBox {
+
+    width: fit-content;
+
+
+    margin: 10px;
+
+    display: inline-block;
+    background-color: yellow;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 6px 12px 6px 12px;
+
+}
+
+.inputBorder {
+    padding: 2px;
+    border: 1px solid #ccc;
+    color: #000;
+}
+
+hr {
+
+    margin: 0px;
+    padding: 0px;
+
+    border-top: 1px dashed gray;
+    border-bottom: 0px;
+
 }
 
 table.todo th {

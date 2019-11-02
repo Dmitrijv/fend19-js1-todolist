@@ -82,6 +82,44 @@ const TASK_CATEGORIES = [
 ];
 
 
+
+function buildRadioButtons() {
+
+    const container = document.querySelector("#radioButtonContainer");
+    container.textContent = "Filter by ";
+
+    const input = document.createElement("input");
+    input.setAttribute("type", "radio");
+    input.setAttribute("name", "todoCategories");
+    input.setAttribute("value", "All");
+    input.checked = true;
+
+    const label = document.createElement("label");
+    label.textContent = 'All';
+    container.appendChild(input);
+    container.appendChild(label);
+
+    TASK_CATEGORIES.forEach(function (category) {
+
+        const input = document.createElement("input");
+        input.setAttribute("type", "radio");
+        input.setAttribute("name", "todoCategories");
+        input.setAttribute("value", category);
+        
+        const label = document.createElement("label");
+        label.textContent = category;
+
+        container.appendChild(input);
+        container.appendChild(label);
+
+    });
+
+
+}
+
+buildRadioButtons();
+
+
 function fillCategoryOptions() {
     const select = document.querySelector('#categorySelector');
     TASK_CATEGORIES.forEach(function (category) {
