@@ -101,7 +101,7 @@ function createNewTask() {
 
     const textInput = document.querySelector("#newTaskInput");
 
-    if (textInput.value.length===0){
+    if (textInput.value.length === 0){
         textInput.focus();
         return;
     }
