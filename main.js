@@ -159,6 +159,15 @@ function createNewTask() {
         return;
     }
 
+    // deadline can't be before today
+    const dateInput = document.querySelector("#dateSelector")
+    const now = new Date();
+    const date = new Date(dateInput.value);
+    if ((date - now) < 0) {
+        dateInput.focus();
+        return;
+    }
+
     textInput.classList.replace("borderRed", "borderWhite");
 
     const newTask = {};
