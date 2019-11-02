@@ -22,9 +22,9 @@
         <div class="listContainer">
 
             <div class="borderedBox">
-                Add a new <select class="inputBorder" id="categorySelector"></select> errand 
-                to <input class="inputBorder" type="text" id="newTaskInput"> 
-                which must be done before <input class="inputBorder" type="date" id="dateSelector" value="2019-11-01" min="2019-11-01" required pattern="\d{4}-\d{2}-\d{2}">
+                Add a new <select class="borderWhite" id="categorySelector"></select> errand 
+                to <input class="borderWhite" type="text" id="newTaskInput"> 
+                which must be done before <input class="borderWhite" type="date" id="dateSelector" value="2019-11-01" min="2019-11-01" required pattern="\d{4}-\d{2}-\d{2}">
                 <input type="submit" for="newTaskInput" value="Submit" id="newTaskSubmit" >
             </div>            
 
@@ -33,24 +33,20 @@
             <div class="borderedBox" >Filter by word: <input type="text" id="filterInput"> </div>
             <div class="borderedBox" >Filter by catergory: <span id='radioButtonContainer'> </div>
 
-            
-
         </div>
 
-
-            <table class="todo" id="todo-table">
-                <thead>
-                    <tr>
-                        <th>Task description</th>
-                        <th class="dealineCell" >Deadline</th>
-                        <th class="categoryCell" >Category</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="todo-table-body">
-                </tbody>
-            </table>
-
+        <table class="todo" id="todo-table">
+            <thead>
+                <tr>
+                    <th>Task description</th>
+                    <th class="dealineCell" >Deadline</th>
+                    <th class="categoryCell" >Category</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="todo-table-body">
+            </tbody>
+        </table>
 
     </div>
 

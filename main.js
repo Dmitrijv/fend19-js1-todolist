@@ -84,35 +84,35 @@ const TASK_CATEGORIES = [
 
 
 
-function buildRadioButtons() {
+function buildRadioButtons(categories) {
 
     const container = document.querySelector("#radioButtonContainer");
-
-    TASK_CATEGORIES.forEach(function (category) {
+    categories.forEach(function (category) {
 
         const input = document.createElement("input");
         input.setAttribute("type", "radio");
-        input.setAttribute("name", "todoCategories");
+        input.setAttribute("name", "categoryInputGroup");
         input.setAttribute("value", category);
+        input.addEventListener("click", function () {
+            drawTodoList(toDoItems);
+        });
 
         if (category === "All")
             input.checked = true;
-        
+
         const label = document.createElement("label");
         label.textContent = category;
-
+        
         container.appendChild(input);
         container.appendChild(label);
 
     });
-
-
 }
 
-buildRadioButtons();
+buildRadioButtons(TASK_CATEGORIES);
 
 
-function fillCategoryOptions() {
+function fillCategoryDropDown() {
     const select = document.querySelector('#categorySelector');
     TASK_CATEGORIES.forEach(function (category) {
         if (category === "All") return;
@@ -122,7 +122,7 @@ function fillCategoryOptions() {
         select.appendChild(option);
     });
 }
-fillCategoryOptions();
+fillCategoryDropDown();
 
 
 const submitButton = document.querySelector("#newTaskSubmit");
@@ -132,10 +132,13 @@ function createNewTask() {
 
     const textInput = document.querySelector("#newTaskInput");
 
-    if (textInput.value.length === 0){
+    if (textInput.value.length === 0) {
         textInput.focus();
+        textInput.classList.replace("borderWhite", "borderRed");
         return;
     }
+
+    textInput.classList.replace("borderRed", "borderWhite");
 
     const newTask = {};
 
@@ -151,12 +154,18 @@ function createNewTask() {
 
 }
 
-function drawTodoList(itemList) {
+function drawTodoList(toDoItems) {
 
     const newList = document.createElement("tbody");
     newList.setAttribute("id", "todo-table-body");
 
-    itemList.forEach(function (item, index) {
+    const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
+
+    toDoItems.forEach(function (item, index) {
+
+        console.log(selectedCategory, " ", item['category']);
+        if (selectedCategory !== 'All' && selectedCategory !== item['category'])
+            return;
 
         const tr = document.createElement("tr");
 
@@ -208,11 +217,19 @@ function deleteListItem(index) {
 }
 
 
+const taskDescriptionField = document.querySelector("#newTaskInput");
+taskDescriptionField.addEventListener('input', function (e) {
+    // reset input field border color
+    e.currentTarget.classList.remove("borderRed");
+    e.currentTarget.classList.add("borderWhite");
+});
+
+
 const filterField = document.querySelector('#filterInput');
-filterField.addEventListener('input', function (event) {
+filterField.addEventListener('input', function (e) {
     const filteredItems = toDoItems.filter(function (item) {
-        return item.toLowerCase().includes(
-            event.currentTarget.value.toLowerCase()
+        return item["task"].toLowerCase().includes(
+            e.currentTarget.value.toLowerCase()
         );
     });
     drawTodoList(filteredItems);

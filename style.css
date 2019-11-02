@@ -76,10 +76,12 @@ table.todo {
     padding: 6px 12px 6px 12px;
 }
 
-.inputBorder {
-    padding: 2px;
+.borderWhite {
     border: 1px solid #ccc;
-    color: #000;
+}
+
+.borderRed {
+    border: 1px solid red;
 }
 
 hr {
@@ -115,11 +117,9 @@ table.todo:not(:last-child) {
 */
 
 table.todo td {
-
     background: whitesmoke;
     border: 1px solid white;
     padding: 6px 4px;
-
 }
 
 
@@ -147,17 +147,6 @@ table.todo .categoryCell {
 table.todo .dealineCell {
     width: 100px;
 }
-
-table.todo td.addItemButtonCell {
-    min-width: 25px;
-    min-height: 25px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 18px;
-    background: darkgoldenrod;
-    color: white;
-}
-
 
 div.listContainer > table.todo > tbody > tr:hover {
     background: white;
