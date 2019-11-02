@@ -83,6 +83,27 @@ const TASK_CATEGORIES = [
 ];
 
 
+// update new errand date selector min value
+function updateMinimumDate() {
+
+    const currentDate = new Date();
+    const date = currentDate.getDate();
+    const month = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+
+    const yyyymmdd = year + "-" + pad(month + 1) + "-" + pad(date);
+
+    const dateInput = document.querySelector("#dateSelector");
+    dateInput.setAttribute("value", yyyymmdd);
+    dateInput.setAttribute("min", yyyymmdd);
+
+    function pad(n) {
+        return n < 10 ? '0' + n : n;
+    }
+
+};
+updateMinimumDate();
+
 
 function buildRadioButtons(categories) {
 
@@ -131,6 +152,7 @@ function createNewTask() {
 
     const textInput = document.querySelector("#newTaskInput");
 
+    // task description can't be empty
     if (textInput.value.length === 0) {
         textInput.focus();
         textInput.classList.replace("borderWhite", "borderRed");
@@ -140,16 +162,13 @@ function createNewTask() {
     textInput.classList.replace("borderRed", "borderWhite");
 
     const newTask = {};
-
     newTask["task"] = textInput.value;
     newTask["category"] = document.querySelector("#categorySelector").value;
     newTask["deadline"] = document.querySelector("#dateSelector").value
 
     textInput.value = "";
-    textInput.focus();
-
+    //textInput.focus();
     toDoItems.push(newTask);
-
     drawFilteredList(toDoItems);
 
 }

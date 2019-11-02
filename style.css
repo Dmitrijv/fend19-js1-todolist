@@ -84,6 +84,11 @@ table.todo {
     border: 1px solid red;
 }
 
+input:invalid {
+    box-shadow:0 0 0px red;
+   border: 1px solid red;
+}
+
 hr {
     margin: 0px;
     padding: 0px;
@@ -136,7 +141,7 @@ table.todo td.deleteButtonCell {
 }
 
 .deleteButtonCell:hover {
-    background-color: tomato;
+    background-color: gray;
 }
 
 table.todo .categoryCell {
