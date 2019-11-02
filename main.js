@@ -93,8 +93,8 @@ function buildRadioButtons(categories) {
         input.setAttribute("type", "radio");
         input.setAttribute("name", "categoryInputGroup");
         input.setAttribute("value", category);
-        input.addEventListener("click", function () {
-            drawTodoList(toDoItems);
+        input.addEventListener("click", function(){
+            drawFilteredList(toDoItems);
         });
 
         if (category === "All")
@@ -127,7 +127,6 @@ fillCategoryDropDown();
 
 const submitButton = document.querySelector("#newTaskSubmit");
 submitButton.addEventListener("click", createNewTask);
-
 function createNewTask() {
 
     const textInput = document.querySelector("#newTaskInput");
@@ -150,22 +149,36 @@ function createNewTask() {
     textInput.focus();
 
     toDoItems.push(newTask);
-    drawTodoList(toDoItems);
+
+    drawFilteredList(toDoItems);
 
 }
+
+
+const filterField = document.querySelector('#filterInput');
+filterField.addEventListener('input', function (){
+    drawFilteredList(toDoItems);
+});
+
+function drawFilteredList(toDoItems) {
+    const filterField = document.querySelector('#filterInput');
+    const filteredItems = toDoItems.filter(function (item) {
+        const includesKeyword = item["task"].toLowerCase().includes(filterField.value.toLowerCase());
+        const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
+        const correctCategory = (selectedCategory === 'All') || (selectedCategory === item['category'])
+        return includesKeyword && correctCategory;
+
+    });
+    drawTodoList(filteredItems);
+}
+
 
 function drawTodoList(toDoItems) {
 
     const newList = document.createElement("tbody");
     newList.setAttribute("id", "todo-table-body");
 
-    const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
-
     toDoItems.forEach(function (item, index) {
-
-        console.log(selectedCategory, " ", item['category']);
-        if (selectedCategory !== 'All' && selectedCategory !== item['category'])
-            return;
 
         const tr = document.createElement("tr");
 
@@ -225,13 +238,4 @@ taskDescriptionField.addEventListener('input', function (e) {
 });
 
 
-const filterField = document.querySelector('#filterInput');
-filterField.addEventListener('input', function (e) {
-    const filteredItems = toDoItems.filter(function (item) {
-        return item["task"].toLowerCase().includes(
-            e.currentTarget.value.toLowerCase()
-        );
-    });
-    drawTodoList(filteredItems);
-});
 
