@@ -4,11 +4,11 @@ html {
     font-size: 14px;
     color: #323C46;
 
-    /*
-    background-color: rgba(134, 134, 134, 1); 
     background-color: rgba(228, 229, 220, 1); 
-    */
+    /*
     background-color: lightgray;
+    background-color: rgba(134, 134, 134, 1); 
+    */
     overflow-y: scroll;
 
 }

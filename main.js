@@ -205,14 +205,18 @@ filterField.addEventListener('input', function (){
 });
 
 function drawFilteredList(toDoItems) {
+
     const filterField = document.querySelector('#filterInput');
     const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
+    
     const filteredItems = toDoItems.filter(function (item) {
         const isCorrectCategory = (selectedCategory === 'All') || (selectedCategory === item['category'])
         const includesKeyword = item["task"].toLowerCase().includes(filterField.value.toLowerCase());
         return isCorrectCategory && includesKeyword;
     });
+
     drawTodoList(filteredItems);
+
 }
 
 
@@ -257,7 +261,7 @@ function drawTodoList(toDoItems) {
             currentDate.setMilliseconds(0);
             const targetDate = new Date(dateStr.replace(/(\d{4})-(\d{2})-(\d{2})/, "$1/$2/$3"));
             return (targetDate - currentDate) < 0;
-        }           
+        }
 
     });
 
