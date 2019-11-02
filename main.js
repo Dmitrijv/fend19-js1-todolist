@@ -57,7 +57,7 @@
 
 const toDoItems = [
     {
-        "task": "clean my house",
+        "task": "clean house",
         "deadline": "2019-11-02",
         "category": "Misc",
     },
@@ -83,10 +83,18 @@ const toDoItems = [
     },
 
     {
-        "task": "sell house to client",
+        "task": "move to appartment",
         "deadline": "2020-11-02",
+        "category": "Misc",
+    },
+
+    {
+        "task": "sell house to client",
+        "deadline": "2020-11-04",
         "category": "Work",
     },
+
+    
 
 ];
 
