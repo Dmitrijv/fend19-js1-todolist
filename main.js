@@ -206,12 +206,11 @@ filterField.addEventListener('input', function (){
 
 function drawFilteredList(toDoItems) {
     const filterField = document.querySelector('#filterInput');
+    const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
     const filteredItems = toDoItems.filter(function (item) {
+        const isCorrectCategory = (selectedCategory === 'All') || (selectedCategory === item['category'])
         const includesKeyword = item["task"].toLowerCase().includes(filterField.value.toLowerCase());
-        const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
-        const correctCategory = (selectedCategory === 'All') || (selectedCategory === item['category'])
-        return includesKeyword && correctCategory;
-
+        return isCorrectCategory && includesKeyword;
     });
     drawTodoList(filteredItems);
 }
