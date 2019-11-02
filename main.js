@@ -75,6 +75,7 @@ const toDoItems = [
 
 
 const TASK_CATEGORIES = [
+    "All",
     "Family",
     "Work",
     "R&R",
@@ -86,18 +87,6 @@ const TASK_CATEGORIES = [
 function buildRadioButtons() {
 
     const container = document.querySelector("#radioButtonContainer");
-    container.textContent = "Filter by ";
-
-    const input = document.createElement("input");
-    input.setAttribute("type", "radio");
-    input.setAttribute("name", "todoCategories");
-    input.setAttribute("value", "All");
-    input.checked = true;
-
-    const label = document.createElement("label");
-    label.textContent = 'All';
-    container.appendChild(input);
-    container.appendChild(label);
 
     TASK_CATEGORIES.forEach(function (category) {
 
@@ -105,6 +94,9 @@ function buildRadioButtons() {
         input.setAttribute("type", "radio");
         input.setAttribute("name", "todoCategories");
         input.setAttribute("value", category);
+
+        if (category === "All")
+            input.checked = true;
         
         const label = document.createElement("label");
         label.textContent = category;
@@ -123,6 +115,7 @@ buildRadioButtons();
 function fillCategoryOptions() {
     const select = document.querySelector('#categorySelector');
     TASK_CATEGORIES.forEach(function (category) {
+        if (category === "All") return;
         const option = document.createElement("option");
         option.setAttribute("value", category);
         option.textContent = category;

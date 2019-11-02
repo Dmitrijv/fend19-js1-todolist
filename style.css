@@ -1,7 +1,7 @@
 html {
 
     font-family: -apple-system, "Segoe UI", Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     color: #323C46;
 
     /*
@@ -39,9 +39,7 @@ html {
 }
 
 .content {
-
     width: 800px;
-
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
@@ -61,7 +59,7 @@ html {
 }
 
 table.todo {
-    width: 100%;
+    width: 800px;
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
@@ -70,17 +68,12 @@ table.todo {
 }
 
 .borderedBox {
-
-    width: fit-content;
-
-
     margin: 10px;
-
     display: inline-block;
-    background-color: yellow;
+    background-color:#F0EDC3
+;
     border: 1px solid rgba(0,0,0,.125);
     padding: 6px 12px 6px 12px;
-
 }
 
 .inputBorder {
@@ -90,17 +83,13 @@ table.todo {
 }
 
 hr {
-
     margin: 0px;
     padding: 0px;
-
     border-top: 1px dashed gray;
     border-bottom: 0px;
-
 }
 
 table.todo th {
-
 
     height: 20px;
     padding: 2px 6px 3px 6px;
@@ -110,8 +99,10 @@ table.todo th {
     color: white;
     text-align: left;
     font-weight: bold;
+    font-size: 16px;
 
     border-right: 1px solid white;
+    border-left: 1px solid white;
 
     /*border: 1px solid white;*/
 
@@ -125,22 +116,14 @@ table.todo:not(:last-child) {
 
 table.todo td {
 
-
     background: whitesmoke;
-
     border: 1px solid white;
-
-    padding: 10px 6px;
-    /* border: 1px solid red; 
-    padding-left: 4px;
-    padding-right: 4px;
-    */
+    padding: 6px 4px;
 
 }
 
 
 table.todo td.titleCell {
-    width: 100%;
     height: 25px;
     font-weight: bold;
     text-align:center;
@@ -153,7 +136,7 @@ table.todo td.deleteButtonCell {
 }
 
 .deleteButtonCell:hover {
-    background-color: red;
+    background-color: tomato;
 }
 
 table.todo .categoryCell {

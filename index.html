@@ -30,18 +30,10 @@
 
             <hr/>
 
-            <div class="borderedBox" id="radioButtonContainer">
+            <div class="borderedBox" >Filter by word: <input type="text" id="filterInput"> </div>
+            <div class="borderedBox" >Filter by catergory: <span id='radioButtonContainer'> </div>
 
-                <input type="radio" id="contactChoice1" name="contact" value="email">
-                <label for="contactChoice1">Email</label>
-
-                <input type="radio" id="contactChoice2" name="contact" value="phone">
-                <label for="contactChoice1">Phone</label>
-
-                <input type="radio" id="contactChoice3" name="contact" value="mail">
-                <label for="contactChoice3">Mail</label>
-
-            </div>
+            
 
         </div>
 
@@ -49,15 +41,10 @@
             <table class="todo" id="todo-table">
                 <thead>
                     <tr>
-                        <th>
-                            Task description
-                            <span class="float-right" > 
-                                <input type="text" id="filterInput" >
-                            </span>
-                        </th>
+                        <th>Task description</th>
                         <th class="dealineCell" >Deadline</th>
-                        <th class="categoryCell" > Category </th>
-                        <th ></th>
+                        <th class="categoryCell" >Category</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="todo-table-body">
