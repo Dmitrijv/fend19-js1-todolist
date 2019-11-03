@@ -201,6 +201,7 @@ function createNewTask() {
     dateInput.classList.remove("borderRed");
 
     toDoItems.push(newTask);
+    textInput.focus();
     drawFilteredList(toDoItems);
 
 }
