@@ -95,6 +95,10 @@ input:invalid {
    border: 1px solid red;
 }
 
+input[type="radio"] {
+    outline: none;
+}
+
 hr {
     margin: 0px;
     padding: 0px;
