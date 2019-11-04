@@ -55,48 +55,45 @@
 
  */
 
-const toDoItems = [
-    {
+const toDoItems = {
+    1:{
         "task": "clean house",
-        "deadline": "2019-11-02",
+        "deadline": "2019-12-02",
         "category": "Misc",
     },
-    {
+    2:{
         "task": "watch a movie",
         "deadline": "2018-11-02",
         "category": "R&R",
     },
-    {
+    3:{
         "task": "play football",
-        "deadline": "2019-11-03",
+        "deadline": "2019-12-03",
         "category": "Family",
     },
-    {
+    4:{
         "task": "bake a cake",
-        "deadline": "2019-11-02",
+        "deadline": "2019-12-02",
         "category": "Misc",
     },
-    {
+    5:{
         "task": "bake bread with family",
         "deadline": "2019-11-03",
         "category": "Family",
     },
-
-    {
+    6:{
         "task": "move to appartment",
         "deadline": "2020-11-02",
         "category": "Misc",
     },
-
-    {
+    7:{
         "task": "sell house to client",
         "deadline": "2020-11-04",
         "category": "Work",
     },
+}
 
-    
 
-];
 
 
 const TASK_CATEGORIES = [
@@ -200,7 +197,9 @@ function createNewTask() {
     textInput.value = "";
     dateInput.classList.remove("borderRed");
 
-    toDoItems.push(newTask);
+    const newTaskId = Object.keys(toDoItems).length + 1;
+    toDoItems[newTaskId] = newTask;
+
     textInput.focus();
     drawFilteredList(toDoItems);
 
@@ -218,11 +217,14 @@ function drawFilteredList(toDoItems) {
     const filterField = document.querySelector('#filterInput');
     const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
     
-    const filteredItems = toDoItems.filter(function (item) {
+    const filteredItems = [];
+
+    for (const index in toDoItems) {
+        const item = toDoItems[index];
         const isCorrectCategory = (selectedCategory === 'All') || (selectedCategory === item['category'])
         const includesKeyword = item["task"].toLowerCase().includes(filterField.value.toLowerCase());
-        return isCorrectCategory && includesKeyword;
-    });
+        if (isCorrectCategory && includesKeyword) filteredItems[index] = item;
+    }
 
     drawTodoList(filteredItems);
 
@@ -234,12 +236,14 @@ function drawTodoList(toDoItems) {
     const newList = document.createElement("tbody");
     newList.setAttribute("id", "todo-table-body");
 
-    toDoItems.forEach(function (item, index) {
+    for (const index in toDoItems) {
+
+        const item = toDoItems[index];
 
         const tr = document.createElement("tr");
 
         const tdTask = document.createElement("td");
-        tdTask.textContent = `${index + 1}. ${item['task']}`;
+        tdTask.textContent = `${item['task']}`; // id[${index}]
         tr.appendChild(tdTask);
 
         const tdDate = document.createElement("td");
@@ -255,7 +259,7 @@ function drawTodoList(toDoItems) {
 
         const tdDelete = document.createElement("td");
         tdDelete.classList.add("deleteButtonCell");
-        tdDelete.setAttribute("id", "deleteItem" + (index + 1) + "Button");
+        tdDelete.setAttribute("id", "deleteItem" + index + "Button");
         tdDelete.addEventListener("click", clickDeleteButton);
         tdDelete.textContent = '🗑️';
         tr.appendChild(tdDelete);
@@ -272,7 +276,7 @@ function drawTodoList(toDoItems) {
             return (targetDate - currentDate) < 0;
         }
 
-    });
+    }
 
     const oldList = document.querySelector("#todo-table-body");
     document.querySelector("#todo-table").replaceChild(newList, oldList);
@@ -285,14 +289,12 @@ drawTodoList(toDoItems);
 
 function clickDeleteButton(e) {
     let itemIndex = Number(e.currentTarget.getAttribute("id").match(/\d+/));
-    itemIndex--; // list is 1 to n, array is 0 to n-1 
     deleteListItem(itemIndex);
 }
 
 
 function deleteListItem(index) {
-    if (index > -1 && index < toDoItems.length)
-        toDoItems.splice(index, 1);
+    delete toDoItems[index];
     drawFilteredList(toDoItems);
 }
 
