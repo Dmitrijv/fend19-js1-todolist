@@ -247,7 +247,7 @@ function drawTodoList(toDoItems) {
         const tr = document.createElement("tr");
 
         const tdTask = document.createElement("td");
-        tdTask.textContent = `id[${index}] ${item['task']}`; // id[${index}] 
+        tdTask.textContent = `${item['task']}`; // id[${index}] 
         tr.appendChild(tdTask);
 
         const tdDate = document.createElement("td");
