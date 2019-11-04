@@ -93,6 +93,8 @@ const toDoItems = {
     },
 }
 
+let nextId = Object.keys(toDoItems).length+1;
+
 
 
 
@@ -197,8 +199,10 @@ function createNewTask() {
     textInput.value = "";
     dateInput.classList.remove("borderRed");
 
-    const newTaskId = Object.keys(toDoItems).length + 1;
-    toDoItems[newTaskId] = newTask;
+    console.log(Object.keys(toDoItems).length, toDoItems);
+
+    toDoItems[nextId] = newTask;
+    nextId++;
 
     textInput.focus();
     drawFilteredList(toDoItems);
@@ -243,7 +247,7 @@ function drawTodoList(toDoItems) {
         const tr = document.createElement("tr");
 
         const tdTask = document.createElement("td");
-        tdTask.textContent = `${item['task']}`; // id[${index}]
+        tdTask.textContent = `id[${index}] ${item['task']}`; // id[${index}] 
         tr.appendChild(tdTask);
 
         const tdDate = document.createElement("td");
@@ -288,16 +292,10 @@ drawTodoList(toDoItems);
 
 
 function clickDeleteButton(e) {
-    let itemIndex = Number(e.currentTarget.getAttribute("id").match(/\d+/));
-    deleteListItem(itemIndex);
-}
-
-
-function deleteListItem(index) {
-    delete toDoItems[index];
+    const itemIndex = Number(e.currentTarget.getAttribute("id").match(/\d+/));
+    delete toDoItems[itemIndex];
     drawFilteredList(toDoItems);
 }
-
 
 const taskDescriptionField = document.querySelector("#newTaskInput");
 taskDescriptionField.addEventListener('input', function (e) {
