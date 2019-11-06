@@ -4,9 +4,9 @@ html {
     font-size: 14px;
     color: #323C46;
 
-    background-color: rgba(228, 229, 220, 1); 
-    /*
     background-color: lightgray;
+    /*
+    background-color: rgba(228, 229, 220, 1); 
     background-color: rgba(134, 134, 134, 1); 
     */
     overflow-y: scroll;
@@ -26,7 +26,6 @@ html {
 .header {
     padding: 4px;
     text-align: center;
-    font-size: larger;
 }
 
 .header h3 {
@@ -150,7 +149,7 @@ table.todo td.deleteButtonCell {
 }
 
 .deleteButtonCell:hover {
-    background-color: gray;
+    background-color: #F00000;
 }
 
 table.todo .categoryCell {
