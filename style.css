@@ -149,7 +149,7 @@ table.todo td.deleteButtonCell {
 }
 
 .deleteButtonCell:hover {
-    background-color: #F00000;
+    background-color: lightgray;
 }
 
 table.todo .categoryCell {
