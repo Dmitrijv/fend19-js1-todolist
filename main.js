@@ -191,9 +191,7 @@ filterField.addEventListener("input", function() {
 function drawFilteredList(toDoItems) {
   const filterField = document.querySelector("#filterInput");
   const selectedCategory = document.querySelector('input[name="categoryInputGroup"]:checked').value;
-
   const filteredItems = [];
-
   for (const index in toDoItems) {
     const item = toDoItems[index];
     const isCorrectCategory = selectedCategory === "All" || selectedCategory === item["category"];
