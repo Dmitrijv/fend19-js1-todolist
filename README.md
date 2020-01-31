@@ -53,3 +53,23 @@ if (dateInput.validity.valid === false) {
   return;
 }
 ```
+
+List of items is filtered by category and keyword if such was specified.
+
+```js
+function drawFilteredList(toDoItems) {
+  const filterField = document.querySelector("#filterInput");
+  const selectedCategory = document.querySelector('input [name="categoryInputGroup"]:checked').value;
+
+  const filteredItems = [];
+
+  for (const index in toDoItems) {
+    const item = toDoItems[index];
+    const isCorrectCategory = selectedCategory === "All" || selectedCategory === item["category"];
+    const includesKeyword = item["task"].toLowerCase().includes(filterField.value.toLowerCase());
+    if (isCorrectCategory && includesKeyword) filteredItems[index] = item;
+  }
+
+  drawTodoList(filteredItems);
+}
+```
